@@ -60,6 +60,10 @@ const TitleTable = styled.p`
     line-height: 4.7vh;
     letter-spacing: 0em;
     text-align: left;
+     @media (max-width:615px)  {
+            font-size: 20px;
+            margin-top: 0px;
+            }
 `
 
 
@@ -71,6 +75,10 @@ const Tip = styled.p`
     font-style: italic;
     font-weight: 400;
     margin-bottom: 2.7vh;
+     @media (max-width:615px)  {
+            font-size: 20px;
+            margin-bottom: 0;
+            }
 `
 
 const Frame = styled.div`
@@ -90,11 +98,20 @@ const Frame = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
+         @media (max-width:615px)  {
+            width: 70px;
+            height: 50px;
+            margin-top: 0px;
+            padding: 0px;
+            }
         p{
             color: #FFF;
             font-size: 1.3vw;
             font-style: normal;
             font-weight: 700;
+             @media (max-width:615px)  {
+            font-size: 10px;
+            }
         }
         h1{
             margin-top: 0.5vh;
@@ -110,6 +127,10 @@ const Frame = styled.div`
 const Title = styled.div`
     width:38.8vw;
     height: 18.8vh;
+     @media (max-width:615px)  {
+            width:100%;
+            height: auto;
+        }
     div{
         display: flex;
         max-width: 100%;
@@ -124,7 +145,12 @@ const Title = styled.div`
             font-weight: 400;
             line-height: 4.7vh;
             letter-spacing: 0em;
-            text-align: left
+            text-align: left;
+             @media (max-width:615px)  {
+            font-size: 10px;
+            margin-top: 0px;
+            }
+             
         }
     }
     h1{
@@ -135,6 +161,10 @@ const Title = styled.div`
         letter-spacing: 0em;
         text-align: left;
         color: #222222;
+        @media (max-width:615px)  {
+            font-size: 40px;
+            margin-top: 0px;
+            }
     }
     p{
         font-size: 1.6vw;
@@ -143,6 +173,11 @@ const Title = styled.div`
         letter-spacing: 0em;
         text-align: left;
         color: #222222;
+        margin-top: 5px;
+        @media (max-width:615px)  {
+            font-size: 15px;
+            margin-top: 0px;
+            }
     }
 `
 const MainContainer = styled.div`
@@ -155,4 +190,7 @@ const MainContainer = styled.div`
     padding-top: 2.6vh;
     padding-bottom: 2.6vh;
     box-sizing: border-box;
+     @media (max-width:615px)  {
+            padding-top: 0;
+        }
 `

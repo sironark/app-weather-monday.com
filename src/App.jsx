@@ -17,11 +17,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Notice this method notifies the monday platform that user gains a first value in an app.
-    // Read more about it here: https://developer.monday.com/apps/docs/mondayexecute#value-created-for-user/
     monday.execute("valueCreatedForUser");
-
-    // TODO: set up event listeners, Here`s an example, read more here: https://developer.monday.com/apps/docs/mondaylisten/
     monday.listen("context", (res) => {
       setDataWeather(res.data);
     });
@@ -39,7 +35,6 @@ const App = () => {
         isLoading, setIsLoading}}>
         <Loading/>
         <Alert/>
-        
         <MainPage/>
       </WeatherContext.Provider>
     

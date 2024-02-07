@@ -44,7 +44,7 @@ export default function SidebarSearch(){
             </Logo>
             <Input onSubmit={getDataWeather}>
             <button type="submit">
-                <CiSearch size='30px' color="#8B9CAF" />
+                <CiSearch size='30px' color="#8B9CAF" className='cisearsh'/>
             </button>
             <input
                 type='text'
@@ -78,7 +78,9 @@ const InputLogoContainer = styled.div`
     @media (max-width:615px)  {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
+        margin-top: 40px;
+
     }
 `;
 
@@ -113,7 +115,7 @@ const WheaterData = styled.p`
     font-style: normal;
     font-weight: 400;
     @media (max-width:615px)  {
-            font-size: 10px;
+            font-size: 20px;
         }
 `
 
@@ -128,13 +130,16 @@ const BriefWeather = styled.div`
         width: 7.8vw;
         height: auto;
           @media (max-width:615px)  {
-        width: 60px;
+            width: 60px;
         }
     }
     h2{
         font-size: 7.8vw;
         font-style: normal;
         font-weight: 300;
+        @media (max-width:615px)  {
+            font-size: 40px;
+        }
         
     }
     p{
@@ -142,6 +147,9 @@ const BriefWeather = styled.div`
         font-size: 6.3vw;
         font-style: normal;
         font-weight: 300;
+        @media (max-width:615px)  {
+            font-size: 30px;
+        }
         
     }
 `
@@ -159,10 +167,19 @@ const Input = styled.form`
     margin-top: 4vh;
     @media (max-width:615px)  {
         width: 100%;
+        height: 20px;
+        margin-top: 0;
     }
 
     button{
         border:none;
+        .cisearsh{
+            @media (max-width:615px)  {
+            width: 10px;
+            height: 10px;
+        }
+            
+        }
         
     }
     input:focus{
@@ -186,7 +203,7 @@ const Input = styled.form`
 
 const SidebarContainer = styled.div`
     width: 29vw;
-    height: 70.3vh;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
