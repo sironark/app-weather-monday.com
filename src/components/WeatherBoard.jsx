@@ -6,7 +6,7 @@ import ForecastTable from "./WeatherTable";
 export default function WeatherBoard() {
     const {dataWeather, forecast} = useContext(WeatherContext);
     const forecastRain = Object.values(forecast);
-    if(forecast.length > 0 && forecast[0].rain) console.log(forecast[0].rain)
+    
     
     return (
         <MainContainer>
@@ -176,7 +176,7 @@ const Title = styled.div`
         margin-top: 5px;
         @media (max-width:615px)  {
             font-size: 15px;
-            margin-top: 0px;
+            margin-top: 10px;
             }
     }
 `

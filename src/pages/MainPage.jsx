@@ -7,13 +7,12 @@ import WeatherBoard from '../components/WeatherBoard';
 import { api } from '../services/api';
 
 export default function MainPage() {
-    const {setDataWeather, setIsLoading, isLoading} = useContext(WeatherContext);
+    const {setDataWeather, setIsLoading} = useContext(WeatherContext);
 
     useEffect( () => {
         setIsLoading(true)
         api.getWeather(standardLat, standardLon)
         .then(res => {
-            console.log(isLoading)
             setIsLoading(false)
             setDataWeather(res.data ? res.data : res.data.main);
     })
