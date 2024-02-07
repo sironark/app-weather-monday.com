@@ -54,7 +54,7 @@ export default function ForecastTable({city}){
             <Skeleton fullWidth={true} height={440} className="skeleton" load = {load}/> 
             <LineChart
                 width={1000}
-                height={440}
+                height={400}
                 data={forecast}
                 margin={{
                     top: 20,

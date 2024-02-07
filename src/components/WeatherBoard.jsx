@@ -127,6 +127,7 @@ const Frame = styled.div`
 const Title = styled.div`
     width:38.8vw;
     height: 18.8vh;
+    margin-top: 15px;
      @media (max-width:615px)  {
             width:100%;
             height: auto;
