@@ -7,15 +7,22 @@ import { daysOfWeek } from '../presentation/constants/daysOfWeek';
 import { api, apiImage } from '../services/api';
 
 export default function SidebarSearch(){
-    const {dataWeather, setDataWeather} = useContext(WeatherContext);
+    const {dataWeather, setDataWeather, setIsLoading} = useContext(WeatherContext);
     const [searchCity, setSearchCity] = useState("");
 
     async function getDataWeather(e){
         e.preventDefault()
-        
+        setIsLoading(true)
         const dataCity = await api.getCityCoordinates(searchCity)
-        const weather = await api.getWeather(dataCity.data[0].lat, dataCity.data[0].lon)
-        setDataWeather(weather.data)
+        await api.getWeather(dataCity.data[0].lat, dataCity.data[0].lon)
+            .then(res => {
+            setIsLoading(false)
+            setDataWeather(res.data)
+    })
+       .catch(error => {
+        setIsLoading(false)
+    }) 
+        
     }
 
     function getDate() {

@@ -1,24 +1,30 @@
 import styled from "styled-components"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { standardLat, standardLon } from "../presentation/constants/standardCities";
 import {api} from '../services/api.js'
 import { ABREVIATED_WEEKDAYS } from "../presentation/constants/daysOfWeek";
 import CustomTooltip from "./CustomTooltip";
 import { WeatherContext } from "../context/weatherContext.jsx";
+import { Skeleton } from "monday-ui-react-core";
 
 export default function ForecastTable({city}){
     const {forecast, setForecast} = useContext(WeatherContext)
+    const [load, setLoad] = useState(false)
 
     useEffect(() => {
         const lat = city ? city.lat : standardLat;
         const lon = city ? city.lon : standardLon;
-        
+        setLoad(true)
             api.getForecast(lat,lon)
             .then(res => {
+                setLoad(false)
                 convertDate(res.data)
             })
-            .catch(err => {console.log(err)})
+            .catch(err => {
+                console.log(err)
+                setLoad(false)
+            })
             // eslint-disable-next-line
     }, [city]) 
     
@@ -45,6 +51,7 @@ export default function ForecastTable({city}){
     }    
     return(
         <ComponentContainer>
+            <Skeleton fullWidth={true} height={440} className="skeleton" load = {load}/> 
             <LineChart
                 width={1000}
                 height={440}
@@ -55,6 +62,8 @@ export default function ForecastTable({city}){
                     left: 20,
                     bottom: 20,
                 }}
+                className="line"
+                load = {load}
             >
             <CartesianGrid stroke="#F5F5F5" />
             <XAxis dataKey="formatDate" allowDuplicatedCategory={true} allowDecimals={true} allowDataOverflow={false}/>
@@ -62,7 +71,6 @@ export default function ForecastTable({city}){
             <Tooltip content={<CustomTooltip/>}/>
             <Line type="linear" dataKey="main.temp" stroke="#4D4494" />
         </LineChart>
-
         </ComponentContainer>
     )
 }
@@ -70,4 +78,10 @@ export default function ForecastTable({city}){
 const ComponentContainer = styled.div`
     box-sizing: border-box;
     background-color: white;
+    .line{
+        display: ${(prop) => prop.load ? 'none': 'inline'};
+    }
+    .skeleton{
+        display: ${(prop) => prop.load ? 'inline': 'none'};
+    }
 `

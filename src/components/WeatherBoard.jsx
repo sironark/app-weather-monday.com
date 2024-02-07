@@ -6,6 +6,7 @@ import ForecastTable from "./WeatherTable";
 export default function WeatherBoard() {
     const {dataWeather, forecast} = useContext(WeatherContext);
     const forecastRain = Object.values(forecast);
+    if(forecast.length > 0 && forecast[0].rain) console.log(forecast[0].rain)
     
     return (
         <MainContainer>
@@ -29,7 +30,7 @@ export default function WeatherBoard() {
                 </div>
                 <div>
                     <p>Chuva</p>
-                    <h1>{ 0 } mm</h1>
+                    <h1>{ forecast.length > 0 && forecast[0].rain ? forecast[0].rain['3h'] : 0 } mm</h1>
                 </div>
                 <div>
                     <p>Vento</p>
@@ -77,7 +78,7 @@ const Frame = styled.div`
     align-items: center;
     justify-content: space-between;
     div{
-        padding: 2.2vh;
+        padding: 2vh;
         box-sizing: border-box;
         width: 13vw;
         height: 12vh;

@@ -1,15 +1,15 @@
 import { Loader } from 'monday-ui-react-core';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { LoadingContext } from '../context/loadingContext';
+import { WeatherContext } from '../context/weatherContext';
     
 function Loading() {
-    const {isLoading} = useContext(LoadingContext) 
+    const {isLoading} = useContext(WeatherContext) 
     
   return (
-  <Container isloading={toString(isLoading)}>
+  <Container isloading={isLoading}>
     <LoaderContainer>
-        <Loader size={100} color='red'>
+        <Loader size={100} color='#4D4494'>
         </Loader>
     </LoaderContainer>
   </Container>   
@@ -27,7 +27,7 @@ const LoaderContainer = styled.div`
 `;
 
 const Container = styled.div`
-display: ${(prop) => prop.isloading ==="true" ? "inline": "none"};
+display: ${(prop) => prop.isloading ? "inline": "none"};
 position: absolute;
     width: 100vw;
     height: 100vh;

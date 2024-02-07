@@ -5,18 +5,17 @@ import { WeatherContext } from '../context/weatherContext';
 import SidebarSearch from '../components/SidebarSearch';
 import WeatherBoard from '../components/WeatherBoard';
 import { api } from '../services/api';
-import { LoadingContext } from '../context/loadingContext';
 
 export default function MainPage() {
-    const {setDataWeather} = useContext(WeatherContext);
-    const {setIsLoading} = useContext(LoadingContext);
+    const {setDataWeather, setIsLoading, isLoading} = useContext(WeatherContext);
 
     useEffect( () => {
         setIsLoading(true)
-       api.getWeather(standardLat, standardLon)
-       .then(res => {
-        setIsLoading(false)
-        setDataWeather(res.data ? res.data : res.data.main);
+        api.getWeather(standardLat, standardLon)
+        .then(res => {
+            console.log(isLoading)
+            setIsLoading(false)
+            setDataWeather(res.data ? res.data : res.data.main);
     })
        .catch(error => {
         setIsLoading(false)

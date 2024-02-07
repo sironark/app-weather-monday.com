@@ -5,8 +5,8 @@ import "monday-ui-react-core/dist/main.css";
 //Explore more Monday React Components here: https://style.monday.com/
 import { WeatherContext } from "./context/weatherContext";
 import MainPage from "./pages/MainPage";
-import { LoadingContext } from "./context/loadingContext";
-import Loading from "./components/LoadingComponent";
+import Loading from "./components/LoaderMonday";
+import Alert from "./components/AlertMonday";
 
 // Usage of mondaySDK example, for more information visit here: https://developer.monday.com/apps/docs/introduction-to-the-sdk/
 const monday = mondaySdk();
@@ -14,7 +14,7 @@ const monday = mondaySdk();
 const App = () => {
   const [dataWeather, setDataWeather] = useState({});
   const [forecast, setForecast] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Notice this method notifies the monday platform that user gains a first value in an app.
@@ -32,12 +32,17 @@ const App = () => {
   
 
   return (
-    <LoadingContext.Provider value={{isLoading, setIsLoading}}>
-      <WeatherContext.Provider value={{dataWeather, setDataWeather, forecast, setForecast}}>
+    
+      <WeatherContext.Provider value={
+        {dataWeather, setDataWeather, 
+        forecast, setForecast, 
+        isLoading, setIsLoading}}>
         <Loading/>
+        <Alert/>
+        
         <MainPage/>
       </WeatherContext.Provider>
-    </LoadingContext.Provider>
+    
   );
 };
 
