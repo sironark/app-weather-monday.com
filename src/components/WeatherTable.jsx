@@ -62,13 +62,13 @@ export default function ForecastTable({city}){
                     left: 20,
                     bottom: 20,
                 }}
-                
+                className="linechart"
                 load = {load}
             >
             <CartesianGrid stroke="#F5F5F5" />
             <XAxis dataKey="formatDate" allowDuplicatedCategory={true} allowDecimals={true} allowDataOverflow={false}/>
             <YAxis unit={'°C'}/>
-            <Tooltip content={<CustomTooltip/>}/>
+            <Tooltip content={<CustomTooltip/>} />
             <Line type="linear" dataKey="main.temp" stroke="#4D4494" />
         </LineChart>
         </ComponentContainer>
@@ -78,7 +78,7 @@ export default function ForecastTable({city}){
 const ComponentContainer = styled.div`
     box-sizing: border-box;
     background-color: white;
-    .Linechart{
+    .linechart{
         display: ${(prop) => prop.load ? 'none': 'inline'};
     }
     .skeleton{
