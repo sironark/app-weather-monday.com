@@ -62,7 +62,7 @@ export default function ForecastTable({city}){
                     left: 20,
                     bottom: 20,
                 }}
-                className="line"
+                
                 load = {load}
             >
             <CartesianGrid stroke="#F5F5F5" />
@@ -78,7 +78,7 @@ export default function ForecastTable({city}){
 const ComponentContainer = styled.div`
     box-sizing: border-box;
     background-color: white;
-    .line{
+    .Linechart{
         display: ${(prop) => prop.load ? 'none': 'inline'};
     }
     .skeleton{
